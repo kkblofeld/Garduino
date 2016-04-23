@@ -4,7 +4,7 @@
   Ardunio IDE 1.6.6
 */
 
-//Test deiner mutter
+//Das ist ein neuer <Test für einen branch
 #include "DHT.h"
 #include <Servo.h>
 
