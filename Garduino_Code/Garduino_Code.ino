@@ -3,12 +3,7 @@
   Tested with Arduino Uno
   Ardunio IDE 1.6.6
 */
-
-<<<<<<< HEAD
-//Das ist ein neuer <Test für einen branch
-=======
-//Test für branchning 2
->>>>>>> temp_fuehler
+ 
 #include "DHT.h"
 #include <Servo.h>
 
