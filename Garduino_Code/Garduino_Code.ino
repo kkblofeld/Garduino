@@ -17,11 +17,12 @@ DHT dht(DHTPIN, DHTTYPE);
 
 //Variablen
 int humidity_soil = 0;
+int humidity_soil_raw = 0;
 
 // the setup routine runs once when you press reset:
 void setup() {
   // initialize serial communication at 9600 bits per second:
-  Serial.begin(9600);
+  Serial.begin(19200);
   Serial.println("Serial Monitor online");
   dht.begin();
   pinMode(9, OUTPUT);
@@ -30,8 +31,8 @@ void setup() {
 // the loop routine runs over and over again forever:
 void loop() {
   // HUMIDITY SOIL: read the input on analog pin 0:
-  humidity_soil = analogRead(pin_humidity_sensor);
-  humidity_soil = map(humidity_soil, 0, 600, 0, 100);
+  humidity_soil_raw = analogRead(pin_humidity_sensor);
+  humidity_soil = map(humidity_soil_raw, 0, 600, 0, 100);
   humidity_soil = constrain(humidity_soil, 0, 100);
   int sensorValue = map(humidity_soil, 0, 100, 0, 255);
 
@@ -55,6 +56,10 @@ void loop() {
   //analogWrite(9, sensorValue);
 
   // print out the values you read:
+  Serial.print("Bodenfeucht_roh: ");
+  Serial.print(humidity_soil_raw);
+  Serial.print(" ; ");
+
   Serial.print("Bodenfeuchtigkeit: ");
   Serial.print(humidity_soil);
   Serial.print(" %;");
