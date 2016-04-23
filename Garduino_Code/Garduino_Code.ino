@@ -24,6 +24,7 @@ void setup() {
   Serial.begin(9600);
   Serial.println("Serial Monitor online");
   dht.begin();
+  pinMode(9, OUTPUT);
 }
 
 // the loop routine runs over and over again forever:
@@ -42,9 +43,16 @@ void loop() {
     Serial.println("Failed to read from DHT sensor!");
     return;
   }
+  if (humidity_soil<80){
+    digitalWrite(9, HIGH);
+  }
+  else
+  {
+    digitalWrite(9, LOW);
+  }
 
   //Fade the LED using the mapped value
-  analogWrite(9, sensorValue);
+  //analogWrite(9, sensorValue);
 
   // print out the values you read:
   Serial.print("Bodenfeuchtigkeit: ");
